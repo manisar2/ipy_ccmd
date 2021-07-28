@@ -16,4 +16,6 @@ class DisplayType(Enum):
 
 def display_string(self, type=DisplayType.MARKDOWN):
     if 'ipykernel' in sys.modules: display(type.value(self))
-curse(str, "md", display_string)
+def curse_str():
+    curse(str, "md", display_string)
+curse_str()
