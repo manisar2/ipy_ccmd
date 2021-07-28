@@ -9,7 +9,7 @@ def get_long_description():
         return fp.read()
 
 setup(
-    name='ipy_codecell_md',
+    name='ipy_ccmd',
     author='manisar',
     author_email='manisar@randompearls.com',
     install_requires=[
@@ -20,7 +20,7 @@ setup(
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     license='MIT License',
-    packages=['ipy_codecell_md'],
+    packages=['ipy_ccmd'],
     keywords='ipython, markdown, codecell',
     varsion='0.0.1',
     classifiers=[
