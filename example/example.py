@@ -1,7 +1,7 @@
 # Example
 # %% 
 # import ipy_ccmd
-from ipy_ccmd import DisplayType
+from ipyccmd import DisplayType
 import numpy as np
 
 r = 5
