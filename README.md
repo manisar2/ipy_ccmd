@@ -16,7 +16,7 @@ Also, *IPython* is not installed automatically, but it is a dependency.<br>
 Please make sure you have it in your Python environment.
 
 ## Usage
-You can use it two ways.
+It can use it two ways.
 
 ### A. Using curse (*forbiddenfruit*):
 ```python
