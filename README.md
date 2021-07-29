@@ -19,7 +19,7 @@ You may instead choose to use the functionality like `display_string("anystring"
 3. `from ipy_ccmd import DisplayType`<br>
    This is **recommended** as you will probably use `DisplayType` anyway.
 
-### See a [.py](example\example.py) or [.ipynb](example\ipy_md.ipynb) example.
+### See a [.py](example/example.py) or [.ipynb](example/ipy_md.ipynb) example.
 
 ### The display can be modified in these ways (using `type` argument):
 * MARKDOWN
