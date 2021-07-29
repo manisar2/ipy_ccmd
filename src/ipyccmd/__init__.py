@@ -13,6 +13,7 @@ class DisplayType(Enum):
 
 def display_string(self, type=DisplayType.MARKDOWN):
     if 'ipykernel' in sys.modules: display(type.value(self))
+    
 with suppress(ModuleNotFoundError):
     from forbiddenfruit import curse
     def curse_str():

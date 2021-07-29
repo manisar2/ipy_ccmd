@@ -6,7 +6,7 @@ Display markdown from within code cells in IPython output, while ignoring it whe
 More details and explanation on [randompearls.com](https://randompearls.com/science-and-technology/information-technology/coding-and-development-reference-and-tools/show-markdown-within-code-cells-jupyter-and-vs-code-interactive-python/).
 
 ## Installation
-You can install it as a package by running `pip install git+https://github.com/manisar2/ipy_ccmd.git` .
+You can install it as a package by running `pip install git+https://github.com/manisar2/ipyccmd.git` .
 <br>Or copy the code from src/ipy_ccmd/\_\_init\_\_.py into your project.
 
 Note that `forbiddenfruit` is installed as a dependency, so that statements of the form `"anystring".md(type=DisplayType.Type)` can be used conveniently.<br>
