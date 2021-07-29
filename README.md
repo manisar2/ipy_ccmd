@@ -9,15 +9,22 @@ More details and explanation on [randompearls.com](https://randompearls.com/scie
 You can install it as a package by running `pip install git+https://github.com/manisar2/ipy_ccmd.git` .
 <br>Or copy the code from src/ipy_ccmd/\_\_init\_\_.py into your project.
 
-Note that **forbiddenfruit** is installed as a dependency, so that statements of the form `"anystring".md(type=DisplayType.Type)` can be used conveniently.<br>
+Note that `forbiddenfruit` is installed as a dependency, so that statements of the form `"anystring".md(type=DisplayType.Type)` can be used conveniently.<br>
 You may instead choose to use the functionality like `display_string("anystring", type=DisplayType=Type)`.
 
 ## Usage
-### For having curse work, there are three options:
-1. `import ipy_ccmd`
-2. `from ipy_ccmd import curse_str` and call it manually
-3. `from ipy_ccmd import DisplayType`<br>
-   This is **recommended** as you will probably use `DisplayType` anyway.
+You can use it two ways.
+
+### A. Using curse (forbiddenfruit):
+`from ipy_ccmd import DisplayType`<br>
+`"Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.".md()`<br>
+`"V = {1 \over 3} \pi r^2 h".md(DisplayType.MATH)`
+
+### B. Without using curse (you can uninstall `forbiddenfruit`):
+`from ipy_ccmd import display_string, DisplayType`<br>
+`display_string("Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.")`<br>
+`display_string("V = {1 \over 3} \pi r^2 h", DisplayType.MATH)`
+
 
 ### See a [.py](example/example.py) or [.ipynb](example/ipy_md.ipynb) example.
 
