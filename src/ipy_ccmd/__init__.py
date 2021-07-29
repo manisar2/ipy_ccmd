@@ -1,7 +1,5 @@
 # Show markdown in IPython output from within a code cell (selectively)
 # For details see https://randompearls.com/science-and-technology/information-technology/coding-and-development-reference-and-tools/show-markdown-within-code-cells-jupyter-and-vs-code-interactive-python/
-# This code is for VS Code's Python Interactive
-# %%
 # %%
 import sys
 from enum import Enum
