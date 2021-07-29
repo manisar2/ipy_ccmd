@@ -1,6 +1,6 @@
 # Example
 # %% 
-import ipy_ccmd
+# import ipy_ccmd
 from ipy_ccmd import DisplayType
 import numpy as np
 
