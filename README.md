@@ -7,7 +7,7 @@ More details and explanation on [randompearls.com](https://randompearls.com/scie
 
 ## Installation
 You can install it as a package by running `pip install git+https://github.com/manisar2/ipyccmd.git` .
-<br>Or copy the code from *src/ipy_ccmd/\_\_init\_\_.py* into your project.
+<br>Or copy the code from *src/ipyccmd/\_\_init\_\_.py* into your project.
 
 Note that *forbiddenfruit* is installed as a dependency, so that statements of the form `"anystring".md(type=DisplayType.Type)` can be used conveniently.<br>
 You may instead choose to use the functionality like `display_string("anystring", type=DisplayType=Type)`.
@@ -17,7 +17,7 @@ Please make sure you have it in your Python environment.
 
 ## Usage
 It can be used in two ways.<br>
-Note that you will not need the import statements if you have copy-pasted the code from *src/ipy_ccmd/\_\_init\_\_.py* into your current file.
+Note that you will not need the import statements if you have copy-pasted the code from *src/ipyccmd/\_\_init\_\_.py* into your current file.
 
 ### A. Using curse (*forbiddenfruit*):
 ```python
