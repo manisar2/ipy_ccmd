@@ -14,6 +14,8 @@ setup(
     author_email='manisar@randompearls.com',
     install_requires=[
         'forbiddenfruit',
+        'markdown',
+        'beautifulsoup4'
     ],
     description='Show markdown from code cells in IPython',
     long_description=get_long_description(),
