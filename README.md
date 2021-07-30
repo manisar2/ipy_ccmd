@@ -46,7 +46,8 @@ display_string("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH, python_print=
 # string will also be printed when the code is run as normal Python - with markdown symbols
 # removed (except equation symbols).
 
-# Thus, you can have your string displayed in both IPython and Python - with formatting and without markdown symbols respectively.
+# Thus, you can have your string displayed in both IPython and Python - with formatting and
+# without markdown symbols respectively.
 ```
 ### B. By Overriding `print()`:
 ```python
