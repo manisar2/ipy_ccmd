@@ -42,9 +42,9 @@ from ipyccmd import display_string, DisplayType
 display_string("Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.")
 display_string("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH, python_print=True)
 
-# In both the cases, if you pass python_print=True or set global PYTHON_PRINT=True (default), the
-# string will also be printed when the code is run as normal Python - with markdown symbols
-# removed (except equation symbols).
+# In both the cases, if you pass python_print=True or set global PYTHON_PRINT=True (default),
+# the string will also be printed when the code is run as normal Python - with markdown symbols
+# and HTML tags removed (except MATH symbols).
 
 # Thus, you can have your string displayed in both IPython and Python - with formatting and
 # without markdown symbols respectively.
@@ -56,10 +56,10 @@ print = md_print
 print("Now we'll *calculate* the **area** as per $A = \pi r^2 + 2 \pi r h$.")
 print("V = {1 \over 3} \pi r^2 h", is_md=True, type=DisplayType.MATH)
 # This overriden print will ensure that the string is displayed in both IPython (formatted) and
-# Python (with markdown symbols removed).
+# Python (with markdown symbols and HTML tags removed).
 
 # The value of the argument is_md or global IS_MD will work as follows:
-#   True (default) => formatted text in IPython, plain_text (without markdown symbols) in Python
+#   True (default) => formatted text in IPython, plain_text (without markdown symbols and HTML tags) in Python
 #   False => unmodified text in both IPython and Python (like normal print)
 ```
 
