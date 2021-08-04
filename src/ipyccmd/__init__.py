@@ -23,7 +23,7 @@ def md_to_text(md):
     soup = bs(re.sub('<br\s*?>', '\n', html), features='html.parser')
     return soup.get_text()
 
-def display_string(self, type=DisplayType.MARKDOWN, python_print=None):
+def display_string(self, type=DisplayType.MARKDOWN, python_print=None, **kwargs):
     if 'ipykernel' in sys.modules: 
         from IPython.display import display, Markdown, Latex, Math, HTML, Pretty
         f = getattr(self, "__str__", "__repr__")
