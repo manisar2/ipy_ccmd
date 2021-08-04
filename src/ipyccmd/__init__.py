@@ -25,15 +25,15 @@ def md_to_text(md):
 def display_string(self, type=DisplayType.MARKDOWN, python_print=None):
     if 'ipykernel' in sys.modules: 
         from IPython.display import display, Markdown, Latex, Math, HTML, Pretty
-        display(eval(type.value)(self))
+        f = getattr(self, "__str__", "__repr__")
+        display(eval(type.value)(f(), **kwargs))
     else:
         if python_print is None: python_print = PYTHON_PRINT
         if python_print: print(md_to_text(self))
 
 with suppress(ModuleNotFoundError):
     from forbiddenfruit import curse
-    def curse_str():
-        curse(str, "md", display_string)
+    def curse_str(): curse(object, "md", display_string)
     curse_str()
 
 def md_print(*args, **kwargs):
