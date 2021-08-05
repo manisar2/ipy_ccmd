@@ -1,7 +1,9 @@
 ## Show Markdown from within Code Cells in Jupyter and VS Code's Interactive Python
 
 ## Description
-Display markdown from within code cells in IPython output, while ignoring it when run in normal Python (like usual comments).
+This package now serves two purposes:
+1. Display markdown from within code cells in IPython output, while ignoring it when run in normal Python (like usual comments).
+2. Display objects other than strings in IPython output using an extension-like function `.md()`.
 
 More details and explanation on [randompearls.com](https://randompearls.com/science-and-technology/information-technology/coding-and-development-reference-and-tools/show-markdown-within-code-cells-jupyter-and-vs-code-interactive-python/).
 
@@ -36,7 +38,8 @@ Note that you will not need the import statements shown below if you have copy-p
 from ipyccmd import DisplayType
 "Now we'll *calculate* the **area** as per $A = \pi r^2 + 2 \pi r h$.".md()
 "V = {1 \over 3} \pi r^2 h".md(dtype=DisplayType.MATH, python_print=True)
-(2).md(DisplayType.MATH)
+(2).md(DisplayType.MATH) # .md() is not limited to strings
+object().md()
 
 # Without using curse (can uninstall forbiddenfruit):
 from ipyccmd import display_ccmd, DisplayType
@@ -57,7 +60,8 @@ from ipyccmd import md_print, DisplayType
 print = md_print
 print("Now we'll *calculate* the **area** as per $A = \pi r^2 + 2 \pi r h$.")
 print("V = {1 \over 3} \pi r^2 h", is_md=True, dtype=DisplayType.MATH)
-print(2, is_md=True, dtype=DisplayType.MATH)
+print(2, is_md=True, dtype=DisplayType.MATH) # the new print can handle other objects as well
+print(object(), is_md=True) # any object can be displayed/printed
 # This overriden print will ensure that the string is displayed in both IPython (formatted) and
 # Python (with markdown symbols and HTML tags removed).
 

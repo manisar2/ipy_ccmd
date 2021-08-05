@@ -19,7 +19,8 @@ A = np.pi * r**2 + 2 * np.pi * r * h
 display_ccmd("<h2>Volume of a cone is given by:</h2>", dtype=DisplayType.HTML)
 "V = {1 \over 3} \pi r^2 h".md(DisplayType.MATH)
 f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}".md(DisplayType.PRETTY)
-(2).md(DisplayType.MATH)
+(2).md(DisplayType.MATH) # .md() is not limited to strings
+object().md() # any object can be printed/displayed
 
 ################################################################################
 md_print("---", dtype=DisplayType.MARKDOWN) # we'll use md_print for print henceforth
@@ -36,7 +37,8 @@ A = np.pi * r**2 + 2 * np.pi * r * h
 print("<h2>Volume of a cone is given by:</h2>", dtype=DisplayType.HTML)
 print("V = {1 \over 3} \pi r^2 h", dtype=DisplayType.MATH)
 print(f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}", dtype=DisplayType.PRETTY)
-print(2, is_md=True, dtype=DisplayType.MATH)
+print(2, is_md=True, dtype=DisplayType.MATH) # the new print can handle other objects as well
+print(object(), is_md=True) # any object can be displayed/printed
 
 ############# For output in IPython, see the notebook example.ipynb #############
 ################################ Python Output #################################
@@ -52,6 +54,7 @@ print(2, is_md=True, dtype=DisplayType.MATH)
 # [[1 2]
 #  [3 4]]
 # 2
+# <object object at 0x000000000AS5435F345FF43FGGFG45>
 
 # Will now use overridden print()
 
@@ -65,3 +68,4 @@ print(2, is_md=True, dtype=DisplayType.MATH)
 # [[1 2]
 #  [3 4]]
 # 2
+# <object object at 0x000000000AS5435F345FF43FGGFG45>
