@@ -17,7 +17,7 @@ But, if you do have IPython, those print statements will print formatted text.
 
 Note that *forbiddenfruit* is installed as a dependency, so that statements of the form `"*anymdstring*".md(type=DisplayType.Type)` can be used conveniently.<br>
 
-You can uninstall forbiddenfruit if you want and then use `display_string("*anymdstring*", type=DisplayType=Type)`.
+You can uninstall forbiddenfruit if you want and then use `display_ccmd("*anymdstring*", type=DisplayType=Type)`.
 
 ## Installation
 The package can be installed by running `pip install git+https://github.com/manisar2/ipyccmd.git`.
@@ -25,12 +25,12 @@ The package can be installed by running `pip install git+https://github.com/mani
 
 ## Usage
 It can be used in two ways depending upon your taste:
-* using function `display_string()` (or curse function `.md()`), or 
+* using function `display_ccmd()` (or curse function `.md()`), or 
 * by overriding `print()`.
 
 Note that you will not need the import statements shown below if you have copy-pasted the code from *src/ipyccmd/\_\_init\_\_.py* into your current file.
 
-### A. Using `display_string()` or curse `.md()`:
+### A. Using `display_ccmd()` or curse `.md()`:
 ```python
 # With curse .md():
 from ipyccmd import DisplayType
@@ -39,10 +39,10 @@ from ipyccmd import DisplayType
 (2).md(DisplayType.MATH)
 
 # Without using curse (can uninstall forbiddenfruit):
-from ipyccmd import display_string, DisplayType
-display_string("Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.")
-display_string("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH, python_print=True)
-display_string(2, DisplayType.MATH)
+from ipyccmd import display_ccmd, DisplayType
+display_ccmd("Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.")
+display_ccmd("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH, python_print=True)
+display_ccmd(2, DisplayType.MATH)
 
 # In both the cases, if you pass python_print=True or set global PYTHON_PRINT=True (default),
 # the string will also be printed when the code is run as normal Python - with markdown symbols
