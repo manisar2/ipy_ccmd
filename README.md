@@ -15,9 +15,9 @@ These packages are auto-installed during the installation of this package.
 This is because if you use the overridden print statements (explained below), they are supposed to work without IPython as well.<br>
 But, if you do have IPython, those print statements will print formatted text.
 
-Note that *forbiddenfruit* is installed as a dependency, so that statements of the form `"*anymdstring*".md(type=DisplayType.Type)` can be used conveniently.<br>
+Note that *forbiddenfruit* is installed as a dependency, so that statements of the form `"*anymdstring*".md(dtype=DisplayType.Type)` can be used conveniently.<br>
 
-You can uninstall forbiddenfruit if you want and then use `display_ccmd("*anymdstring*", type=DisplayType=Type)`.
+You can uninstall forbiddenfruit if you want and then use `display_ccmd("*anymdstring*", dtype=DisplayType.MARKDOWN)`.
 
 ## Installation
 The package can be installed by running `pip install git+https://github.com/manisar2/ipyccmd.git`.
@@ -35,13 +35,13 @@ Note that you will not need the import statements shown below if you have copy-p
 # With curse .md():
 from ipyccmd import DisplayType
 "Now we'll *calculate* the **area** as per $A = \pi r^2 + 2 \pi r h$.".md()
-"V = {1 \over 3} \pi r^2 h".md(type=DisplayType.MATH, python_print=True)
+"V = {1 \over 3} \pi r^2 h".md(dtype=DisplayType.MATH, python_print=True)
 (2).md(DisplayType.MATH)
 
 # Without using curse (can uninstall forbiddenfruit):
 from ipyccmd import display_ccmd, DisplayType
 display_ccmd("Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.")
-display_ccmd("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH, python_print=True)
+display_ccmd("V = {1 \over 3} \pi r^2 h", dtype=DisplayType.MATH, python_print=True)
 display_ccmd(2, DisplayType.MATH)
 
 # In both the cases, if you pass python_print=True or set global PYTHON_PRINT=True (default),
@@ -56,8 +56,8 @@ display_ccmd(2, DisplayType.MATH)
 from ipyccmd import md_print, DisplayType
 print = md_print
 print("Now we'll *calculate* the **area** as per $A = \pi r^2 + 2 \pi r h$.")
-print("V = {1 \over 3} \pi r^2 h", is_md=True, type=DisplayType.MATH)
-print(2, is_md=True, type=DisplayType.MATH)
+print("V = {1 \over 3} \pi r^2 h", is_md=True, dtype=DisplayType.MATH)
+print(2, is_md=True, dtype=DisplayType.MATH)
 # This overriden print will ensure that the string is displayed in both IPython (formatted) and
 # Python (with markdown symbols and HTML tags removed).
 
