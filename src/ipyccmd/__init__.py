@@ -5,7 +5,7 @@ from enum import Enum
 import builtins as __builtin__
 from contextlib import suppress
 
-PYTHON_PRINT = True # use with display_string() or md()
+PYTHON_PRINT = True # use with display_ccmd() or md()
 IS_MD = True # use with print()
 
 class DisplayType(Enum):
@@ -23,7 +23,7 @@ def md_to_text(md):
     soup = bs(re.sub('<br\s*?>', '\n', html), features='html.parser')
     return soup.get_text()
 
-def display_string(obj, type=DisplayType.MARKDOWN, python_print=None, **kwargs):
+def display_ccmd(obj, type=DisplayType.MARKDOWN, python_print=None, **kwargs):
     """Display markdown or HTML text in IPython from code cell. Will additionally print markdown-html-stripped\
         text in Python (configurable).
 
@@ -56,7 +56,7 @@ def display_string(obj, type=DisplayType.MARKDOWN, python_print=None, **kwargs):
 
 with suppress(ModuleNotFoundError):
     from forbiddenfruit import curse
-    def curse_obj(): curse(object, "md", display_string)
+    def curse_obj(): curse(object, "md", display_ccmd)
     curse_obj()
 
 def md_print(*args, **kwargs):
@@ -85,7 +85,7 @@ def md_print(*args, **kwargs):
         if 'ipykernel' in sys.modules:
             for arg in args:
                 # We already checked and it's IPython. No need to pass python_print as True.
-                display_string(arg, type=type, python_print=False)
+                display_ccmd(arg, type=type, python_print=False)
             return None
         else: # it's Python. We need to convert md to plain text (if possible - MARKDOWN and HTML).
             if type in [DisplayType.MARKDOWN, DisplayType.HTML]:

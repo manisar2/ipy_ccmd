@@ -1,6 +1,6 @@
 # Example
 # %%
-from ipyccmd import display_string, DisplayType
+from ipyccmd import display_ccmd, DisplayType
 from ipyccmd import md_print
 import numpy as np
 
@@ -8,7 +8,7 @@ r = 5
 h = 20
 volume = np.pi * r**2 * h
 "---".md()
-"## Using `display_string()` or curse `.md()`".md(type=DisplayType.MARKDOWN)
+"## Using `display_ccmd()` or curse `.md()`".md(type=DisplayType.MARKDOWN)
 "<hr>".md(type=DisplayType.HTML)
 """Thus we have calculated the **volume** of the *cylinder* by using the formula
 $$ V = \pi r^2 h $$
@@ -16,7 +16,7 @@ $$ V = \pi r^2 h $$
 Read on...""".md()
 "Now we'll calculate the area as per $A = \pi r^2 + 2 \pi r h$.".md()
 A = np.pi * r**2 + 2 * np.pi * r * h
-display_string("<h2>Volume of a cone is given by:</h2>", type=DisplayType.HTML)
+display_ccmd("<h2>Volume of a cone is given by:</h2>", type=DisplayType.HTML)
 "V = {1 \over 3} \pi r^2 h".md(DisplayType.MATH)
 f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}".md(DisplayType.PRETTY)
 (2).md(DisplayType.MATH)
@@ -40,7 +40,7 @@ print(2, is_md=True, type=DisplayType.MATH)
 
 ############# For output in IPython, see the notebook example.ipynb #############
 ################################ Python Output #################################
-# Using display_string() or curse .md()
+# Using display_ccmd() or curse .md()
 
 # Thus we have calculated the volume of the cylinder by using the formula
 # $$ V = \pi r^2 h $$
