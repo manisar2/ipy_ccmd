@@ -75,8 +75,8 @@ The advantage with B. is that if `print()` is used without any arguments (`is_md
 ## Notes
 ### The display can be modified in these ways (using `type` argument):
 * MARKDOWN
-* LATEX - Use this for mimicking normal print
+* LATEX
 * MATH
 * HTML
-* PRETTY
-* PLAIN - Use this for raw display
+* PRETTY - use this for mimicking normal print
+* PLAIN - use this for raw display
