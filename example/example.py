@@ -20,7 +20,7 @@ display_ccmd("<h2>Volume of a cone is given by:</h2>", dtype=DisplayType.HTML)
 "V = {1 \over 3} \pi r^2 h".md(DisplayType.MATH)
 f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}".md(DisplayType.PRETTY)
 (2).md(DisplayType.MATH) # .md() is not limited to strings
-object().md() # any object can be printed/displayed
+object().md() # any object can be displayed/printed
 
 ################################################################################
 md_print("---", dtype=DisplayType.MARKDOWN) # we'll use md_print for print henceforth
