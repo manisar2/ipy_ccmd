@@ -1,4 +1,5 @@
 # Example
+# %%
 from ipyccmd import display_string, DisplayType
 from ipyccmd import md_print
 import numpy as np
@@ -18,6 +19,7 @@ A = np.pi * r**2 + 2 * np.pi * r * h
 display_string("<h2>Volume of a cone is given by:</h2>", type=DisplayType.HTML)
 "V = {1 \over 3} \pi r^2 h".md(DisplayType.MATH)
 f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}".md(DisplayType.PRETTY)
+(2).md(DisplayType.MATH)
 
 ################################################################################
 md_print("---", type=DisplayType.MARKDOWN) # we'll use md_print for print henceforth
@@ -34,8 +36,9 @@ A = np.pi * r**2 + 2 * np.pi * r * h
 print("<h2>Volume of a cone is given by:</h2>", type=DisplayType.HTML)
 print("V = {1 \over 3} \pi r^2 h", type=DisplayType.MATH)
 print(f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}", type=DisplayType.PRETTY)
+print(2, is_md=True, type=DisplayType.MATH)
 
-############# For output in IPython, see the notebook ipy_md.ipynb #############
+############# For output in IPython, see the notebook example.ipynb #############
 ################################ Python Output #################################
 # Using display_string() or curse .md()
 
@@ -48,6 +51,7 @@ print(f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}", type=DisplayTy
 # New array =
 # [[1 2]
 #  [3 4]]
+# 2
 
 # Will now use overridden print()
 
@@ -60,3 +64,4 @@ print(f"New array = \n{np.array_str(np.array([[1, 2],[3, 4]]))}", type=DisplayTy
 # New array =
 # [[1 2]
 #  [3 4]]
+# 2
