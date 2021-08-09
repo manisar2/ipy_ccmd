@@ -22,8 +22,11 @@ Note that *forbiddenfruit* is installed as a dependency, so that statements of t
 You can uninstall forbiddenfruit if you want and then use `display_ccmd("*anymdstring*", dtype=DisplayType.MARKDOWN)`.
 
 ## Installation
-The package can be installed by running `pip install git+https://github.com/manisar2/ipyccmd.git`.
-<br>Or copy the code from *src/ipyccmd/\_\_init\_\_.py* into your project.
+The package can be installed by running:
+```shell
+pip install git+https://github.com/manisar2/ipyccmd.git
+```
+Or, copy the code from *src/ipyccmd/\_\_init\_\_.py* into your project.
 
 ## Usage
 It can be used in two ways depending upon your taste:
