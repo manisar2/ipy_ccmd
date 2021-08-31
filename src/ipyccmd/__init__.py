@@ -18,7 +18,18 @@ class DisplayType(Enum):
     MATH = "Math"
     HTML = "HTML"
     PRETTY = "Pretty"
-    PLAIN = ""
+    NONE = "None"
+    def get_repr_method(self, obj):
+        name = self.name
+        repr_method = None
+        if name == "NONE": return None # display() will handle (for none)
+        if name == "MARKDOWN": return getattr(obj, "__str__", "__repr__") # markdown
+        if repr_method == "MATH":
+            repr_method = "_repr_math_" # math
+            if not getattr(obj, repr_method, None): repr_method = "_repr_latex_"
+        if not repr_method: repr_method = f"_repr_{str(name).lower()}_" # latex, html, pretty
+        if not getattr(obj, repr_method, None): repr_method = "__str__" # fallback to __str__
+        return getattr(obj, repr_method, obj.__repr__) # last fallback to __repr__
 
 def print_object_name(obj):
     objname = None
@@ -45,40 +56,41 @@ def display_ccmd(obj, dtype=None, python_print=None, print_objname=None, **kwarg
     """Display markdown or HTML text in IPython from code cell. Will additionally print markdown-html-stripped\
         text in Python (configurable).
 
-    Parameters
-    ----------
-    obj : object
-        Text (or any object that has __repr__ or __str__), with (or without markdown).
+        Parameters
+        ----------
+        obj : object
+            Text (or any object that has __repr__ or __str__), with (or without markdown).
 
-    dtype : ipyccmd.DisplayType (default: .MARKDOWN)
-        How to format the markdown text, e.g. as MATH, LATEX, HTML etc.
+        dtype : ipyccmd.DisplayType (default: .MARKDOWN)
+            How to format the markdown text, e.g. as MATH, LATEX, HTML etc.
 
-        Pass .PRETTY to print as if builtin print would do. .PLAIN would display raw string representation of\
-            the object.
+            Pass .PRETTY to print the default representation of the object. 
+            .NONE will let display() handle the object.
 
-    python_print: bool (default: True through global ipyccmd.PYTHON_PRINT)
-        Whether or not to print obj in Python.
-        :True => mardown symbols such as *, _ etc. to be removed as\
-            much as possible (except MATH symbols).
+        python_print: bool (default: True through global ipyccmd.PYTHON_PRINT)
+            Whether or not to print obj in Python.
+            :True => mardown symbols such as *, _ etc. to be removed as\
+                much as possible (except MATH symbols).
 
-    print_objname: bool (default: True through global ipyccmd.PYTHON_PRINT)
-        Print object name if the name exists (only in IPython)
-    """
-    f = getattr(obj, "__str__", "__repr__")
+        print_objname: bool (default: True through global ipyccmd.PYTHON_PRINT)
+            Print object name if the name exists (only in IPython)
+        """
 
     if 'ipykernel' in sys.modules:
         from IPython.display import display, Markdown, Latex, Math, HTML, Pretty
         print_objname = PRINT_OBJNAME if print_objname is None else print_objname
         if print_objname: print_object_name(obj)
-        if dtype is DisplayType.PLAIN: display(f(), **kwargs)
+        if dtype is DisplayType.NONE: display(obj, **kwargs)
         else:
             if dtype is None:
                 if DEFAULT_DTYPE: dtype = DEFAULT_DTYPE
                 else:
                     if type(obj) is str: dtype = DisplayType.MARKDOWN
                     else: dtype = DisplayType.PRETTY # let's be more verbose for objs other than strs.
-            display(eval(dtype.value)(f(), **kwargs))
+            f = dtype.get_repr_method(obj)
+            display(eval(dtype.value)(f()), **kwargs)
     else: # Python
+        f = getattr(obj, "__str__", obj.__repr__)
         python_print = PYTHON_PRINT if python_print is None else python_print
         if python_print:
             if dtype in [DisplayType.MARKDOWN, DisplayType.HTML] :  __builtin__.print(md_to_text(f()))
@@ -106,8 +118,8 @@ def md_print(*args, **kwargs):
     dtype : ipyccmd.DisplayType (default: .MARKDOWN)
         How to format the markdown text, e.g. as MATH, LATEX, HTML etc.        
 
-        Pass .PRETTY to print as if builtin print would do. .PLAIN would display raw string representation of\
-            the object.
+        Pass .PRETTY to print the default representation of the object. 
+        .NONE will let display handle the object.
 
     print_objname: bool (default: True through global ipyccmd.PYTHON_PRINT)
         Print object name if the name exists (only in IPython)
@@ -125,7 +137,7 @@ def md_print(*args, **kwargs):
                         if type(arg) is str: dtype = DisplayType.MARKDOWN
                         else: dtype = DisplayType.PRETTY # let's be more verbose for objs other than strs.
                 # We already checked and it's IPython. No need to pass python_print as True.
-                display_ccmd(arg, dtype=dtype, python_print=False, print_objname=False) # objname becomes arg
+                display_ccmd(arg, dtype=dtype, python_print=False, print_objname=False, **kwargs) # objname becomes arg
             return None
         else: # it's Python. We need to convert md to plain text (if possible - MARKDOWN and HTML).
             if dtype in [DisplayType.MARKDOWN, DisplayType.HTML]:

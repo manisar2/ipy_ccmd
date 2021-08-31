@@ -100,10 +100,10 @@ The advantage with B. is that if `print()` is used without any arguments (`is_md
    Note that this is applicable only to `display_ccmd()` or `md()`.<br>
    If you are using overriden `print()` or `md_print()`, it will always print in both IPython and Python.
 
-5. ### Suppressing overrident `print()` or `md_print()` temporarily
-   Overriden `print()` (or `md_print()`) provides these two features:
+5. ### Suppressing the package temporarily
+   The functions `display_ccmd()`, `md()`, `print()` and `md_print()` provide the following two features:
     - displaying formatted text in IPython; and 
     - printing markdown-html-stripped text in Python
 
-   If you want to suppress this functionality temporarily, either pass `is_md=False`, or set the global `IS_MD=False`. This will enable normal printing.<br>This affects only `md_print()` (and overridden `print()`). `display_ccmd()` and `md()` will continue to work as usual.
+   If you want to suppress this functionality temporarily, either pass `is_md=False`, or set the global `IS_MD=False`. This will enable normal printing.
    
