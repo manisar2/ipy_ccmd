@@ -85,8 +85,8 @@ The advantage with B. is that if `print()` is used without any arguments (`is_md
     * LATEX
     * MATH
     * HTML
-    * PRETTY - use this for mimicking normal print
-    * PLAIN - use this for raw display
+    * PRETTY - use this for displaying / printing the default representation of the object
+    * NONE - this will let display() handle the object (and not any of its representations)
 
 2. ### If `dtype` is not provided, it is automatically determined as follows:<br>
    - If global `DEFAULT_DTYPE` is set, its value will be used; otherwise
