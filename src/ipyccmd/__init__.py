@@ -65,7 +65,7 @@ def display_ccmd(obj, dtype=None, python_print=None, print_objname=None, **kwarg
             How to format the markdown text, e.g. as MATH, LATEX, HTML etc.
 
             Pass .PRETTY to print the default representation of the object. 
-            .NONE will let display() handle the object (and not any of its representations).
+            .NONE will let display() handle the object.
 
         python_print: bool (default: True through global ipyccmd.PYTHON_PRINT)
             Whether or not to print obj in Python.
@@ -78,6 +78,8 @@ def display_ccmd(obj, dtype=None, python_print=None, print_objname=None, **kwarg
 
     if 'ipykernel' in sys.modules:
         from IPython.display import display, Markdown, Latex, Math, HTML, Pretty
+        # With .NONE, need to pass print_objname explicitly (global will not help)
+        if print_objname is None and dtype == DisplayType.NONE: print_objname = False
         print_objname = PRINT_OBJNAME if print_objname is None else print_objname
         if print_objname: print_object_name(obj)
         if dtype is DisplayType.NONE: display(obj, **kwargs)
@@ -119,7 +121,7 @@ def md_print(*args, **kwargs):
         How to format the markdown text, e.g. as MATH, LATEX, HTML etc.        
 
         Pass .PRETTY to print the default representation of the object. 
-        .NONE will let display handle the object (and not any of its representations).
+        .NONE will let display handle the object.
 
     print_objname: bool (default: True through global ipyccmd.PYTHON_PRINT)
         Print object name if the name exists (only in IPython)
