@@ -2,10 +2,18 @@
 
 ## Description
 This package now serves two purposes:
-1. Display markdown from within code cells in IPython output, while ignoring it when run in normal Python (like usual comments).
-2. Display objects other than strings in IPython output using an extension-like function `.md()`.
+1. Display markdown from within code cells in IPython output, while ignoring it when run in normal Python (like usual comments). For example, 
+   ```python
+   "V = {1 \over 3} \pi r^2 h".md()
+   ```
+2. Display objects other than strings in IPython output using an extension-like function `.md()`. For example:
+   ```python
+   dot = Digraph()
+   ...
+   dot.md()
+   ```
 
-More details and explanation on [randompearls.com](https://randompearls.com/science-and-technology/information-technology/coding-and-development-reference-and-tools/show-markdown-within-code-cells-jupyter-and-vs-code-interactive-python/).
+A note on how it can be useful can be found on [randompearls.com](https://randompearls.com/science-and-technology/information-technology/coding-and-development-reference-and-tools/show-markdown-within-code-cells-jupyter-and-vs-code-interactive-python/).
 
 ## Dependencies
 These packages are auto-installed during the installation of this package.
