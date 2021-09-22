@@ -9,7 +9,7 @@ This package now serves two purposes:
 2. Display objects other than strings in IPython output using an extension-like function `.md()`. For example:
    ```python
    dot = Digraph()
-   ...
+   # ...
    dot.md()
    ```
 
