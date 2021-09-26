@@ -89,8 +89,10 @@ def display_ccmd(obj, dtype=None, python_print=None, print_objname=None, **kwarg
                 else:
                     if type(obj) is str: dtype = DisplayType.MARKDOWN
                     else: dtype = DisplayType.PRETTY # let's be more verbose for objs other than strs.
-            f = dtype.get_repr_method(obj)
-            display(eval(dtype.value)(f()), **kwargs)
+            if dtype is DisplayType.NONE: display(obj, **kwargs)
+            else:
+                f = dtype.get_repr_method(obj)
+                display(eval(dtype.value)(f()), **kwargs)
     else: # Python
         f = getattr(obj, "__str__", obj.__repr__)
         python_print = PYTHON_PRINT if python_print is None else python_print
